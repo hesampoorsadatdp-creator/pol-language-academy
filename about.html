@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>درباره ما | آکادمی زبان پل</title>
+  <meta name="description" content="آشنایی با تاریخچه، اساتید، رسالت آموزشی و متدهای تدریس در آکادمی زبان پل."/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#fd9923",
+            "primary-container": "#1e293b",
+            "primary-fixed": "#334155",
+            "secondary-container": "#fd9923",
+            "accent-warning": "#F7941D",
+            "secondary": "#fdba74",
+            "surface-white": "#161a23",
+            "surface": "#080808",
+            "surface-card": "#13161c",
+            "surface-container-lowest": "#080808",
+            "surface-container-low": "#0f1218",
+            "surface-container": "#161a23",
+            "surface-container-high": "#1c212d",
+            "surface-variant": "#252c3c",
+            "outline-variant": "#2c3446",
+            "on-surface": "#f3f4f6",
+            "on-surface-variant": "#9ca3af",
+            "text-deep": "#ffffff",
+            "success-green": "#10b981"
+          },
+          fontFamily: {
+            sans: ['Vazirmatn', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#080808] text-[#f3f4f6] min-h-screen flex flex-col antialiased selection:bg-[#fd9923]/30 selection:text-[#fdba74]">
+
+  <!-- Header -->
+  <header class="w-full bg-[#080808]/90 backdrop-blur-xl border-b border-white/10 sticky top-0 z-40 shadow-lg shadow-black/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Right: Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#fd9923] to-[#d97706] text-white flex items-center justify-center shadow-lg shadow-[#fd9923]/20 group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-2xl">language</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-xl text-white tracking-tight">آکادمی زبان پل</span>
+          <span class="text-[11px] text-gray-400 font-medium -mt-1">Pol Language Academy</span>
+        </div>
+      </a>
+
+      <!-- Center: Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-gray-300">
+        <a href="courses.html" class="nav-link hover:text-[#fdba74] transition-colors">Courses / دوره‌ها</a>
+        <a href="products.html" class="nav-link hover:text-[#fdba74] transition-colors">Products / محصولات</a>
+        <a href="about.html" class="nav-link text-[#fdba74] font-bold active">About Us / درباره ما</a>
+        <a href="news.html" class="nav-link hover:text-[#fdba74] transition-colors">News / اخبار</a>
+        <a href="portal.html" class="nav-link hover:text-[#fdba74] transition-colors">Schedule / برنامه</a>
+      </nav>
+
+      <!-- Left: Auth Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="portal.html" class="hidden sm:inline-flex px-4 py-2 rounded-xl border border-white/20 text-gray-200 font-semibold text-sm hover:bg-white/5 transition">
+          Login / ورود
+        </a>
+        <a href="register.html" class="px-5 py-2 rounded-xl bg-gradient-to-r from-[#fd9923] to-[#F7941D] hover:from-[#f59e0b] hover:to-[#ea580c] text-white font-bold text-sm shadow-[0_4px_16px_rgba(253,153,35,0.35)] transition">
+          Register / ثبت‌نام
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#0c0e14] px-4 py-4 space-y-3">
+      <a href="courses.html" class="block py-2 text-gray-300 hover:text-white font-medium">دوره‌ها (Courses)</a>
+      <a href="products.html" class="block py-2 text-gray-300 hover:text-white font-medium">محصولات (Products)</a>
+      <a href="about.html" class="block py-2 text-[#fdba74] font-bold">درباره ما (About Us)</a>
+      <a href="news.html" class="block py-2 text-gray-300 hover:text-white font-medium">اخبار (News)</a>
+      <a href="portal.html" class="block py-2 text-gray-300 hover:text-white font-medium">پرتال دانشجویی (Schedule)</a>
+      <a href="contact.html" class="block py-2 text-gray-300 hover:text-white font-medium">تماس با ما</a>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="relative bg-gradient-to-b from-[#13161c] to-[#080808] text-white py-16 sm:py-24 overflow-hidden border-b border-white/10">
+    <div class="absolute inset-0 opacity-10 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1920&auto=format&fit=crop');"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block bg-[#fd9923]/20 border border-[#fd9923]/40 text-[#fdba74] text-xs font-bold px-4 py-1.5 rounded-full mb-4 shadow">
+        ساختن پل‌های ارتباطی میان فرهنگ‌ها
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold mb-6 leading-tight">
+        درباره آکادمی تخصصی زبان پل
+      </h1>
+      <p class="text-gray-300 text-sm sm:text-lg max-w-3xl mx-auto leading-relaxed">
+        ما در آکادمی پل معتقدیم یادگیری زبان صرفاً حفظ کردن کلمات نیست، بلکه دستیابی به ابزاری قدرتمند برای کشف فرصت‌های جهانی، مهاجرت تحصیلی و ارتباط بین‌المللی است.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 bg-[#13161c] rounded-2xl shadow-2xl p-6 sm:p-8 border border-white/10">
+      
+      <div class="text-center p-4">
+        <span class="block text-3xl sm:text-4xl font-extrabold text-[#fdba74] mb-1">+۱۵</span>
+        <span class="text-xs sm:text-sm text-gray-400 font-semibold">سال تجربه آموزشی</span>
+      </div>
+
+      <div class="text-center p-4 border-r border-white/10">
+        <span class="block text-3xl sm:text-4xl font-extrabold text-[#fd9923] mb-1">+۱۲,۰۰۰</span>
+        <span class="text-xs sm:text-sm text-gray-400 font-semibold">فارغ‌التحصیل موفق</span>
+      </div>
+
+      <div class="text-center p-4 border-r border-white/10">
+        <span class="block text-3xl sm:text-4xl font-extrabold text-emerald-400 mb-1">۹۸٪</span>
+        <span class="text-xs sm:text-sm text-gray-400 font-semibold">قبولی در آزمون‌های بین‌المللی</span>
+      </div>
+
+      <div class="text-center p-4 border-r border-white/10">
+        <span class="block text-3xl sm:text-4xl font-extrabold text-white mb-1">+۴۰</span>
+        <span class="text-xs sm:text-sm text-gray-400 font-semibold">استاد برتر و بین‌المللی</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <div class="space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">چشم‌انداز و مأموریت ما</h2>
+        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+          آکادمی زبان پل از سال ۱۳۸۸ با هدف ارتقای استانداردهای آموزش زبان‌های خارجی فعالیت خود را آغاز کرد. تیم آموزشی ما متشکل از اساتید دارای مدارک بین‌المللی CELTA و DELTA و اگزمینرهای رسمی آزمون‌های بین‌المللی است.
+        </p>
+        
+        <div class="space-y-4">
+          <div class="flex items-start gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#fd9923]/20 border border-[#fd9923]/40 text-[#fdba74] flex items-center justify-center shrink-0 mt-1 font-bold">✓</div>
+            <div>
+              <h4 class="font-bold text-white text-base mb-1">متد یادگیری غوطه‌وری (Immersive Method)</h4>
+              <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">تأکید بر مکالمه عملی از جلسه اول بدون استفاده از زبان مادری در کلاس.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#fd9923]/20 border border-[#fd9923]/40 text-[#fdba74] flex items-center justify-center shrink-0 mt-1 font-bold">✓</div>
+            <div>
+              <h4 class="font-bold text-white text-base mb-1">پشتیبانی و منتورینگ ۲۴/۷</h4>
+              <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">همراهی مستمر پشتیبان‌های آموزشی از طریق پرتال دانشجویی و تلگرام.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5">
+            <div class="w-8 h-8 rounded-full bg-[#fd9923]/20 border border-[#fd9923]/40 text-[#fdba74] flex items-center justify-center shrink-0 mt-1 font-bold">✓</div>
+            <div>
+              <h4 class="font-bold text-white text-base mb-1">تضمین بازگشت شهریه و قبولی</h4>
+              <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">تضمین کتبی نمره در دوره‌های آمادگی آزمون‌های آیلتس، تافل و گوته.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="relative">
+        <div class="rounded-3xl overflow-hidden shadow-2xl border border-white/15">
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" alt="کلاس درس آکادمی پل" class="w-full h-auto object-cover">
+        </div>
+        <div class="absolute -bottom-6 -right-6 bg-[#13161c] border border-white/15 text-white p-6 rounded-2xl shadow-2xl max-w-xs hidden sm:block">
+          <span class="block text-2xl font-bold mb-1 text-[#fdba74]">کیفیت تضمین‌شده</span>
+          <span class="text-xs text-gray-300">بیش از ۱۰ سال آموزش استاندارد زبان در محیطی پویا و مجهز.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Instructors / Faculty -->
+  <section class="bg-[#0f1218] py-16 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">اساتید برتر آکادمی</h2>
+        <p class="text-gray-400 text-sm">یادگیری با بهترین مدرسان با مدارک بین‌المللی و تجربه تدریس در دانشگاه‌های برتر دنیا.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Teacher 1 -->
+        <div class="bg-[#13161c] rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group hover:border-[#fd9923]/50 transition-all shadow-xl">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="دکتر سارا احمدی" class="w-24 h-24 rounded-full object-cover mb-4 border-2 border-[#fd9923] shadow-md">
+          <h3 class="font-bold text-white text-base mb-1">دکتر سارا احمدی</h3>
+          <span class="text-xs text-[#fdba74] font-semibold mb-2">اگزمینر رسمی آیلتس و مدرس C2</span>
+          <p class="text-xs text-gray-400 mb-4 leading-relaxed">دارای مدرک DELTA از دانشگاه کمبریج با ۱۰ سال سابقه تدریس تخصصی.</p>
+        </div>
+
+        <!-- Teacher 2 -->
+        <div class="bg-[#13161c] rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group hover:border-[#fd9923]/50 transition-all shadow-xl">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop" alt="استاد علیرضا رضایی" class="w-24 h-24 rounded-full object-cover mb-4 border-2 border-[#fd9923] shadow-md">
+          <h3 class="font-bold text-white text-base mb-1">استاد علیرضا رضایی</h3>
+          <span class="text-xs text-[#fdba74] font-semibold mb-2">مدرس ارشد مکالمه و تلفظ</span>
+          <p class="text-xs text-gray-400 mb-4 leading-relaxed">متخصص در رفع لهجه و تسلط در مکالمات تجاری و مذاکرات بین‌المللی.</p>
+        </div>
+
+        <!-- Teacher 3 -->
+        <div class="bg-[#13161c] rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group hover:border-[#fd9923]/50 transition-all shadow-xl">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop" alt="مهندس کاظمی" class="w-24 h-24 rounded-full object-cover mb-4 border-2 border-[#fd9923] shadow-md">
+          <h3 class="font-bold text-white text-base mb-1">مهندس مهسا کاظمی</h3>
+          <span class="text-xs text-[#fdba74] font-semibold mb-2">مدرس زبان آلمانی (Goethe C1)</span>
+          <p class="text-xs text-gray-400 mb-4 leading-relaxed">فارغ‌التحصیل دانشگاه مونیخ و متخصص آمادگی آزمون‌های سفارت آلمان.</p>
+        </div>
+
+        <!-- Teacher 4 -->
+        <div class="bg-[#13161c] rounded-2xl p-6 border border-white/10 text-center flex flex-col items-center group hover:border-[#fd9923]/50 transition-all shadow-xl">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300&auto=format&fit=crop" alt="مادام صبوری" class="w-24 h-24 rounded-full object-cover mb-4 border-2 border-[#fd9923] shadow-md">
+          <h3 class="font-bold text-white text-base mb-1">مادام مریم صبوری</h3>
+          <span class="text-xs text-[#fdba74] font-semibold mb-2">مدرس زبان فرانسه (DALF C1)</span>
+          <p class="text-xs text-gray-400 mb-4 leading-relaxed">دارای مدرک آموزش زبان فرانسه از انستیتو سوربن فرانسه.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-gradient-to-r from-[#161a23] via-[#1a1f2c] to-[#12151c] border border-white/15 rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+      <div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold mb-2 text-white">همین امروز سفر یادگیری زبان خود را آغاز کنید</h3>
+        <p class="text-gray-300 text-sm max-w-xl">مشاوران ما آماده پاسخگویی و راهنمایی شما برای انتخاب بهترین مسیر یادگیری هستند.</p>
+      </div>
+      <div class="flex flex-wrap gap-4">
+        <button onclick="openConsultationModal()" class="px-6 py-3 bg-gradient-to-r from-[#fd9923] to-[#F7941D] hover:from-[#f59e0b] hover:to-[#ea580c] text-white font-bold text-sm rounded-xl shadow-lg shadow-[#fd9923]/25 transition flex items-center gap-2">
+          <span class="material-symbols-outlined text-lg">send</span>
+          مشاوره رایگان در تلگرام
+        </button>
+        <a href="courses.html" class="px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-xl border border-white/15 transition">
+          مشاهده لیست دوره‌ها
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#050608] text-white pt-12 pb-8 border-t border-white/10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10 text-xs sm:text-sm text-gray-400 mb-8 font-medium">
+        <a href="contact.html" class="hover:text-[#fdba74] transition-colors">Location / شعب و آدرس</a>
+        <a href="about.html" class="hover:text-[#fdba74] transition-colors">Career / همکاری با ما</a>
+        <a href="contact.html" class="hover:text-[#fdba74] transition-colors">Contact Support / پشتیبانی</a>
+        <a href="about.html" class="hover:text-[#fdba74] transition-colors">Terms of Service / قوانین</a>
+        <a href="about.html" class="hover:text-[#fdba74] transition-colors">Privacy Policy / حریم خصوصی</a>
+      </div>
+      <div class="text-center text-xs text-gray-500 border-t border-white/10 pt-6">
+        <p dir="ltr" class="font-sans">
+          .Pol Language Academy. All rights reserved. Building bridges through language 2024 ©
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/telegram.js"></script>
+
+</body>
+</html>

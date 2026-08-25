@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>اخبار و اطلاعیه‌ها | آکادمی زبان پل</title>
+  <meta name="description" content="آخرین اخبار، رویدادها و مقالات آموزشی تخصصی آموزشگاه زبان پل."/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#fd9923",
+            "primary-container": "#1e293b",
+            "primary-fixed": "#334155",
+            "secondary-container": "#fd9923",
+            "accent-warning": "#F7941D",
+            "secondary": "#fdba74",
+            "surface-white": "#161a23",
+            "surface": "#080808",
+            "surface-card": "#13161c",
+            "surface-container-lowest": "#080808",
+            "surface-container-low": "#0f1218",
+            "surface-container": "#161a23",
+            "surface-container-high": "#1c212d",
+            "surface-variant": "#252c3c",
+            "outline-variant": "#2c3446",
+            "on-surface": "#f3f4f6",
+            "on-surface-variant": "#9ca3af",
+            "text-deep": "#ffffff",
+            "success-green": "#10b981"
+          },
+          fontFamily: {
+            sans: ['Vazirmatn', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#080808] text-[#f3f4f6] min-h-screen flex flex-col antialiased selection:bg-[#fd9923]/30 selection:text-[#fdba74]">
+
+  <!-- Header -->
+  <header class="w-full bg-[#080808]/90 backdrop-blur-xl border-b border-white/10 sticky top-0 z-40 shadow-lg shadow-black/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Right: Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#fd9923] to-[#d97706] text-white flex items-center justify-center shadow-lg shadow-[#fd9923]/20 group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-2xl">language</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-xl text-white tracking-tight">آکادمی زبان پل</span>
+          <span class="text-[11px] text-gray-400 font-medium -mt-1">Pol Language Academy</span>
+        </div>
+      </a>
+
+      <!-- Center: Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-gray-300">
+        <a href="courses.html" class="nav-link hover:text-[#fdba74] transition-colors">Courses / دوره‌ها</a>
+        <a href="products.html" class="nav-link hover:text-[#fdba74] transition-colors">Products / محصولات</a>
+        <a href="about.html" class="nav-link hover:text-[#fdba74] transition-colors">About Us / درباره ما</a>
+        <a href="news.html" class="nav-link text-[#fdba74] font-bold active">News / اخبار</a>
+        <a href="portal.html" class="nav-link hover:text-[#fdba74] transition-colors">Schedule / برنامه</a>
+      </nav>
+
+      <!-- Left: Auth Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="portal.html" class="hidden sm:inline-flex px-4 py-2 rounded-xl border border-white/20 text-gray-200 font-semibold text-sm hover:bg-white/5 transition">
+          Login / ورود
+        </a>
+        <a href="register.html" class="px-5 py-2 rounded-xl bg-gradient-to-r from-[#fd9923] to-[#F7941D] hover:from-[#f59e0b] hover:to-[#ea580c] text-white font-bold text-sm shadow-[0_4px_16px_rgba(253,153,35,0.35)] transition">
+          Register / ثبت‌نام
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#0c0e14] px-4 py-4 space-y-3">
+      <a href="courses.html" class="block py-2 text-gray-300 hover:text-white font-medium">دوره‌ها (Courses)</a>
+      <a href="products.html" class="block py-2 text-gray-300 hover:text-white font-medium">محصولات (Products)</a>
+      <a href="about.html" class="block py-2 text-gray-300 hover:text-white font-medium">درباره ما (About Us)</a>
+      <a href="news.html" class="block py-2 text-[#fdba74] font-bold">اخبار و اطلاعیه‌ها (News)</a>
+      <a href="portal.html" class="block py-2 text-gray-300 hover:text-white font-medium">پرتال دانشجویی (Schedule)</a>
+      <a href="contact.html" class="block py-2 text-gray-300 hover:text-white font-medium">تماس با ما</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    
+    <!-- Title & Subtitle -->
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">اخبار و اطلاعیه‌ها</h1>
+      <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+        آخرین به‌روزرسانی‌ها، رویدادها و نکات آموزشی از آکادمی زبان پل. با ما همراه باشید تا از برنامه‌های جدید مطلع شوید.
+      </p>
+    </div>
+
+    <!-- Featured News Hero Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+      
+      <!-- Right Big Feature Card (2 cols in RTL) -->
+      <div onclick="openNewsModal(1)" class="lg:col-span-2 relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer h-[360px] sm:h-[400px] border border-white/10">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" 
+             alt="ثبت نام ترم پاییز" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+        
+        <div class="absolute bottom-0 right-0 p-6 sm:p-8 text-white w-full">
+          <span class="inline-block bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white text-xs font-bold px-3 py-1 rounded-full mb-3 shadow">
+            اطلاعیه آکادمی
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold mb-3 leading-tight group-hover:text-[#fdba74] transition-colors">
+            ثبت‌نام ترم پاییز آغاز شد
+          </h2>
+          <p class="text-gray-300 text-xs sm:text-sm line-clamp-2 max-w-2xl mb-4 leading-relaxed">
+            با شروع فصل جدید، دوره‌های فشرده و مکالمه پیشرفته در تمامی شعب آکادمی پل برگزار می‌شود. فرصت را برای ارتقای مهارت‌های زبانی خود از دست ندهید.
+          </p>
+          <div class="flex items-center gap-2 text-xs text-gray-400">
+            <span class="material-symbols-outlined text-sm text-[#fdba74]">calendar_month</span>
+            <span>۱۵ شهریور ۱۴۰۳</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left 2 Stacked Feature Cards (in RTL) -->
+      <div class="flex flex-col gap-6">
+        
+        <!-- Stacked Card 1 -->
+        <div onclick="openNewsModal(2)" class="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer h-[170px] sm:h-[188px] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop" 
+               alt="جشنواره فرهنگ و زبان ملل" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+          
+          <div class="absolute bottom-0 right-0 p-4 sm:p-5 text-white">
+            <span class="inline-block bg-blue-950/80 border border-blue-500/40 text-blue-300 text-[11px] font-semibold px-2.5 py-0.5 rounded-full mb-2">
+              رویدادها
+            </span>
+            <h3 class="text-base sm:text-lg font-bold group-hover:text-[#fdba74] transition-colors">
+              جشنواره فرهنگ و زبان ملل
+            </h3>
+          </div>
+        </div>
+
+        <!-- Stacked Card 2 -->
+        <div onclick="openNewsModal(3)" class="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer h-[170px] sm:h-[188px] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop" 
+               alt="تقویت حافظه لغات" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+          
+          <div class="absolute bottom-0 right-0 p-4 sm:p-5 text-white">
+            <span class="inline-block bg-[#1e2430] border border-white/15 text-[#fdba74] text-[11px] font-semibold px-2.5 py-0.5 rounded-full mb-2">
+              نکات یادگیری
+            </span>
+            <h3 class="text-base sm:text-lg font-bold group-hover:text-[#fdba74] transition-colors">
+              ۵ روش برای تقویت حافظه لغات
+            </h3>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Filter Pills & Search Bar -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-[#13161c] p-4 rounded-2xl border border-white/10 shadow-xl">
+      
+      <!-- Right: Category Filter Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
+        <button onclick="filterNewsCategory('all')" class="news-cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white shadow-sm transition" data-cat="all">
+          همه اخبار
+        </button>
+        <button onclick="filterNewsCategory('announcements')" class="news-cat-btn px-4 py-2 rounded-xl text-xs font-medium bg-[#181c26] text-gray-300 hover:bg-white/5 transition" data-cat="announcements">
+          اطلاعیه‌های آکادمی
+        </button>
+        <button onclick="filterNewsCategory('tips')" class="news-cat-btn px-4 py-2 rounded-xl text-xs font-medium bg-[#181c26] text-gray-300 hover:bg-white/5 transition" data-cat="tips">
+          نکات یادگیری
+        </button>
+        <button onclick="filterNewsCategory('events')" class="news-cat-btn px-4 py-2 rounded-xl text-xs font-medium bg-[#181c26] text-gray-300 hover:bg-white/5 transition" data-cat="events">
+          رویدادها
+        </button>
+      </div>
+
+      <!-- Left: Search Box -->
+      <div class="relative w-full sm:w-72">
+        <input type="text" id="news-search" placeholder="جستجو در اخبار..." oninput="searchNews(this.value)"
+               class="w-full pl-9 pr-4 py-2 bg-[#181c26] border border-white/15 rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#fd9923] transition">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-base">search</span>
+      </div>
+
+    </div>
+
+    <!-- News Articles List -->
+    <div class="space-y-4" id="news-list-container">
+      
+      <!-- Item 1 -->
+      <div onclick="openNewsModal(4)" class="news-item bg-[#13161c] p-5 sm:p-6 rounded-2xl border border-white/10 shadow-xl hover:border-[#fd9923]/40 transition-all flex flex-col-reverse md:flex-row items-center justify-between gap-6 cursor-pointer group" data-category="announcements">
+        <div class="flex-1 w-full text-right">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-amber-950/80 border border-amber-500/30 text-amber-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full">اطلاعیه آکادمی</span>
+            <span class="text-gray-400 text-xs flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs text-[#fdba74]">schedule</span>
+              ۱۲ شهریور ۱۴۰۵
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[#fdba74] transition-colors">
+            با افتخار میگم پل های آینده تو میتونی از اینجا شروع کنی
+          </h3>
+          <p class="text-gray-300 text-xs sm:text-sm line-clamp-2 mb-4 leading-relaxed">
+            آموزشگاه زبان پل برای پیشرفت شما بیشتر دنبال مهارت هست تا یاد گرفتن، با فراهم‌سازی محیطی کاملاً پویا و مجهز.
+          </p>
+          <span class="inline-flex items-center gap-1 text-xs font-bold text-[#fdba74] group-hover:underline">
+            <span>ادامه مطلب</span>
+            <span class="material-symbols-outlined text-sm">arrow_left</span>
+          </span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=400&auto=format&fit=crop" 
+             alt="آکادمی پل" class="w-full md:w-56 h-36 object-cover rounded-xl shrink-0 border border-white/10">
+      </div>
+
+      <!-- Item 2 -->
+      <div onclick="openNewsModal(5)" class="news-item bg-[#13161c] p-5 sm:p-6 rounded-2xl border border-white/10 shadow-xl hover:border-[#fd9923]/40 transition-all flex flex-col-reverse md:flex-row items-center justify-between gap-6 cursor-pointer group" data-category="tips">
+        <div class="flex-1 w-full text-right">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full">نکات یادگیری</span>
+            <span class="text-gray-400 text-xs flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs text-[#fdba74]">schedule</span>
+              ۸ شهریور ۱۴۰۵
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[#fdba74] transition-colors">
+            چگونه ترس از مکالمه را از بین ببریم؟
+          </h3>
+          <p class="text-gray-300 text-xs sm:text-sm line-clamp-2 mb-4 leading-relaxed">
+            بسیاری از زبان‌آموزان هنگام صحبت کردن دچار استرس می‌شوند. در این مقاله به بررسی راهکارهای عملی برای غلبه بر این ترس می‌پردازیم.
+          </p>
+          <span class="inline-flex items-center gap-1 text-xs font-bold text-[#fdba74] group-hover:underline">
+            <span>ادامه مطلب</span>
+            <span class="material-symbols-outlined text-sm">arrow_left</span>
+          </span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" 
+             alt="ترس از مکالمه" class="w-full md:w-56 h-36 object-cover rounded-xl shrink-0 border border-white/10">
+      </div>
+
+      <!-- Item 3 -->
+      <div onclick="openNewsModal(6)" class="news-item bg-[#13161c] p-5 sm:p-6 rounded-2xl border border-white/10 shadow-xl hover:border-[#fd9923]/40 transition-all flex flex-col-reverse md:flex-row items-center justify-between gap-6 cursor-pointer group" data-category="events">
+        <div class="flex-1 w-full text-right">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="bg-blue-950/80 border border-blue-500/30 text-blue-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full">رویدادها</span>
+            <span class="text-gray-400 text-xs flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs text-[#fdba74]">schedule</span>
+              ۵ شهریور ۱۴۰۵
+            </span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[#fdba74] transition-colors">
+            برگزاری آزمون بین المللی در ماه مهر
+          </h3>
+          <p class="text-gray-300 text-xs sm:text-sm line-clamp-2 mb-4 leading-relaxed">
+            آکادمی پل جهت آمادگی بیشتر زبان‌آموزان، آزمون آزمایشی بین المللی را با استانداردهای کامل برگزار می‌کند. ثبت‌نام هم‌اکنون باز است.
+          </p>
+          <span class="inline-flex items-center gap-1 text-xs font-bold text-[#fdba74] group-hover:underline">
+            <span>ادامه مطلب</span>
+            <span class="material-symbols-outlined text-sm">arrow_left</span>
+          </span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=400&auto=format&fit=crop" 
+             alt="آزمون بین المللی" class="w-full md:w-56 h-36 object-cover rounded-xl shrink-0 border border-white/10">
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center items-center gap-2 mt-12">
+      <button onclick="changeNewsPage(-1)" class="w-10 h-10 rounded-xl border border-white/15 bg-[#13161c] text-gray-300 hover:bg-white/5 flex items-center justify-center">
+        <span class="material-symbols-outlined text-sm">chevron_right</span>
+      </button>
+      <button class="w-10 h-10 rounded-xl bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white font-bold text-sm shadow">۱</button>
+      <button onclick="changeNewsPage(2)" class="w-10 h-10 rounded-xl border border-white/15 bg-[#13161c] text-gray-300 hover:bg-white/5 font-bold text-sm">۲</button>
+      <button onclick="changeNewsPage(3)" class="w-10 h-10 rounded-xl border border-white/15 bg-[#13161c] text-gray-300 hover:bg-white/5 font-bold text-sm">۳</button>
+      <span class="px-2 text-gray-500">...</span>
+      <button onclick="changeNewsPage(8)" class="w-10 h-10 rounded-xl border border-white/15 bg-[#13161c] text-gray-300 hover:bg-white/5 font-bold text-sm">۸</button>
+      <button onclick="changeNewsPage(1)" class="w-10 h-10 rounded-xl border border-white/15 bg-[#13161c] text-gray-300 hover:bg-white/5 flex items-center justify-center">
+        <span class="material-symbols-outlined text-sm">chevron_left</span>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- News Reader Modal -->
+  <div id="news-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+    <div class="modal-backdrop fixed inset-0" onclick="closeNewsModal()"></div>
+    <div class="modal-content relative bg-[#13161c] rounded-2xl shadow-2xl w-full max-w-2xl p-6 sm:p-8 z-10 animate-fade-in border border-white/15 max-h-[90vh] overflow-y-auto text-gray-200">
+      
+      <div class="flex justify-between items-start pb-4 border-b border-white/10 mb-6">
+        <div>
+          <span id="news-modal-badge" class="inline-block px-3 py-1 bg-amber-950/80 border border-amber-500/30 text-amber-300 text-xs font-bold rounded-full mb-2">اطلاعیه</span>
+          <h2 id="news-modal-title" class="text-2xl font-bold text-white">عنوان خبر</h2>
+          <span id="news-modal-date" class="text-xs text-gray-400 block mt-1">تاریخ</span>
+        </div>
+        <button onclick="closeNewsModal()" class="text-gray-400 hover:text-white p-1.5 rounded-lg">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-sm text-gray-300 leading-relaxed">
+        <img id="news-modal-img" src="" alt="News banner" class="w-full h-64 object-cover rounded-xl mb-4 border border-white/10">
+        <p id="news-modal-body">متن کامل خبر در این بخش قرار می‌گیرد.</p>
+        
+        <div class="pt-4 border-t border-white/10 flex justify-between items-center">
+          <button onclick="openConsultationModal()" class="bg-gradient-to-r from-[#fd9923] to-[#F7941D] hover:from-[#f59e0b] hover:to-[#ea580c] text-white px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 shadow">
+            <span class="material-symbols-outlined text-sm">send</span>
+            مشاوره و ثبت‌نام در دوره مرتبط
+          </button>
+          <button onclick="closeNewsModal()" class="text-xs font-bold text-gray-400 hover:text-white">
+            بستن پنجره
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#050608] text-white pt-12 pb-8 border-t border-white/10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center font-bold text-xl mb-6">Pol Language Academy</div>
+
+      <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10 text-xs sm:text-sm text-gray-400 mb-8 font-medium">
+        <a href="contact.html" class="hover:text-[#fdba74] transition-colors">Location / شعب و آدرس</a>
+        <a href="about.html" class="hover:text-[#fdba74] transition-colors">Career / همکاری با ما</a>
+        <a href="contact.html" class="hover:text-[#fdba74] transition-colors">Contact Support / پشتیبانی</a>
+        <a href="about.html" class="hover:text-[#fdba74] transition-colors">Terms of Service / قوانین</a>
+        <a href="about.html" class="hover:text-[#fdba74] transition-colors">Privacy Policy / حریم خصوصی</a>
+      </div>
+
+      <div class="text-center text-xs text-gray-500 border-t border-white/10 pt-6">
+        <p dir="ltr" class="font-sans">
+          .Pol Language Academy. All rights reserved. Building bridges through language 2024 ©
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/telegram.js"></script>
+
+  <script>
+    const NEWS_DETAILS = {
+      1: {
+        title: "ثبت‌نام ترم پاییز آغاز شد",
+        badge: "اطلاعیه آکادمی",
+        badgeClass: "bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white",
+        date: "۱۵ شهریور ۱۴۰۳",
+        img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
+        body: "با کمال مسرت به اطلاع کلیه زبان‌آموزان گرامی می‌رساند که تقویم آموزشی ترم پاییز آکادمی زبان پل در تمامی سطوح مکالمه، دوره‌های فشرده، و کارگاه‌های تخصصی آیلتس و تافل نهایی گردید. کلاس‌ها به دو صورت حضوری در شعب و آنلاین تعاملی با ظرفیت محدود برگزار می‌گردد. جهت بهره‌مندی از تخفیف پیش‌ثبت‌نام، تا پایان هفته جاری اقدام فرمایید."
+      },
+      2: {
+        title: "جشنواره فرهنگ و زبان ملل",
+        badge: "رویدادها",
+        badgeClass: "bg-blue-950/80 border border-blue-500/40 text-blue-300",
+        date: "۱۰ شهریور ۱۴۰۳",
+        img: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop",
+        body: "به مناسبت روز جهانی زبان‌ها، رویداد بزرگ تبادل فرهنگی و مکالمه آزاد با حضور اساتید بین‌المللی و مهمانان خارجی در سالن همایش‌های مرکزی آکادمی پل برگزار می‌شود. در این برنامه بازی‌های زبانی، مسابقات جذاب و نمایشگاه فرهنگ‌های مختلف اجرا خواهد شد."
+      },
+      3: {
+        title: "۵ روش برای تقویت حافظه لغات",
+        badge: "نکات یادگیری",
+        badgeClass: "bg-[#1e2430] border border-white/15 text-[#fdba74]",
+        date: "۵ شهریور ۱۴۰۳",
+        img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop",
+        body: "۱. استفاده از تکنیک جعبه لایتنر و تکرار فاصله‌دار (Spaced Repetition)\n۲. یادگیری کلمات در قالب جملات و داستان‌های کوتاه کاربردی\n۳. استفاده از تصویرسازی ذهنی و ساخت الگوهای خلاقانه\n۴. گوش دادن مداوم به پادکست‌های طبقه‌بندی شده در سطح خود\n۵. مکالمه روزانه و به کارگیری حداقل ۳ لغت جدید در هر جلسه."
+      },
+      4: {
+        title: "با افتخار میگم پل های آینده تو میتونی از اینجا شروع کنی",
+        badge: "اطلاعیه آکادمی",
+        badgeClass: "bg-amber-950/80 border border-amber-500/30 text-amber-300",
+        date: "۱۲ شهریور ۱۴۰۵",
+        img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=400&auto=format&fit=crop",
+        body: "آموزشگاه زبان پل با رویکرد آموزش مهارت‌محور، تمرکز خود را بر ارتقای توانایی ارتباطی موثر در دنیای واقعی قرار داده است. اساتید ما با استفاده از منابع شبیه‌ساز واقعی به شما کمک می‌کنند تا بدون دغدغه در آزمون‌ها و مصاحبه‌های کاری درخشید."
+      },
+      5: {
+        title: "چگونه ترس از مکالمه را از بین ببریم؟",
+        badge: "نکات یادگیری",
+        badgeClass: "bg-emerald-950/80 border border-emerald-500/30 text-emerald-300",
+        date: "۸ شهریور ۱۴۰۵",
+        img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop",
+        body: "ترس از اشتباه کردن، بزرگترین مانع در روان صحبت کردن به زبان خارجی است. کارشناسان ما توصیه می‌کنند ابتدا بر روان بودن (Fluency) تمرکز کنید تا دقت گرامری (Accuracy). در کلاس‌های مکالمه آزاد پل، محیطی بدون قضاوت برای تقویت اعتماد به نفس شما فراهم شده است."
+      },
+      6: {
+        title: "برگزاری آزمون بین المللی در ماه مهر",
+        badge: "رویدادها",
+        badgeClass: "bg-blue-950/80 border border-blue-500/30 text-blue-300",
+        date: "۵ شهریور ۱۴۰۵",
+        img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=400&auto=format&fit=crop",
+        body: "آزمون شبیه‌ساز رسمی ماک آیلتس و گوته با شرایط کاملاً استاندارد و ارائه کارنامه تفکیکی مهارت‌ها همراه با فیدبک ویدیویی اگزمینر در تاریخ ۱۵ مهرماه برگزار می‌گردد. ثبت‌نام از طریق پرتال دانشجویی در دسترس است."
+      }
+    };
+
+    function filterNewsCategory(cat) {
+      document.querySelectorAll('.news-cat-btn').forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.className = "news-cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white shadow-sm transition";
+        } else {
+          btn.className = "news-cat-btn px-4 py-2 rounded-xl text-xs font-medium bg-[#181c26] text-gray-300 hover:bg-white/5 transition";
+        }
+      });
+
+      document.querySelectorAll('.news-item').forEach(item => {
+        if (cat === 'all' || item.dataset.category === cat) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+
+    function searchNews(query) {
+      const q = query.toLowerCase().trim();
+      document.querySelectorAll('.news-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+
+    function openNewsModal(id) {
+      const news = NEWS_DETAILS[id];
+      if (!news) return;
+
+      document.getElementById('news-modal-title').textContent = news.title;
+      document.getElementById('news-modal-badge').textContent = news.badge;
+      document.getElementById('news-modal-badge').className = `inline-block px-3 py-1 ${news.badgeClass} text-xs font-bold rounded-full mb-2`;
+      document.getElementById('news-modal-date').textContent = news.date;
+      document.getElementById('news-modal-img').src = news.img;
+      document.getElementById('news-modal-body').textContent = news.body;
+
+      document.getElementById('news-modal').classList.remove('hidden');
+    }
+
+    function closeNewsModal() {
+      document.getElementById('news-modal').classList.add('hidden');
+    }
+
+    function changeNewsPage(p) {
+      showToast(`صفحه ${p} بارگذاری شد.`, 'success');
+      window.scrollTo({ top: 400, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

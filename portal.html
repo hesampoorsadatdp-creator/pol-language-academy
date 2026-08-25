@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>پرتال دانشجویی | آکادمی زبان پل</title>
+  <meta name="description" content="پرتال دانشجویی آکادمی زبان پل - مشاهده برنامه کلاسی، نمرات، حضور و غیاب و صدور گواهینامه آنلاین."/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#fd9923",
+            "primary-container": "#1e293b",
+            "primary-fixed": "#334155",
+            "secondary-container": "#fd9923",
+            "accent-warning": "#F7941D",
+            "secondary": "#fdba74",
+            "surface-white": "#161a23",
+            "surface": "#080808",
+            "surface-card": "#13161c",
+            "surface-container-lowest": "#080808",
+            "surface-container-low": "#0f1218",
+            "surface-container": "#161a23",
+            "surface-container-high": "#1c212d",
+            "surface-variant": "#252c3c",
+            "outline-variant": "#2c3446",
+            "on-surface": "#f3f4f6",
+            "on-surface-variant": "#9ca3af",
+            "text-deep": "#ffffff",
+            "success-green": "#10b981"
+          },
+          fontFamily: {
+            sans: ['Vazirmatn', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#080808] text-[#f3f4f6] min-h-screen flex flex-col md:flex-row antialiased selection:bg-[#fd9923]/30 selection:text-[#fdba74]">
+
+  <!-- Mobile Top Bar -->
+  <div class="md:hidden w-full bg-[#080808] border-b border-white/10 p-4 flex items-center justify-between sticky top-0 z-30">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#fd9923] to-[#d97706] text-white flex items-center justify-center">
+        <span class="material-symbols-outlined text-lg">language</span>
+      </div>
+      <span class="font-bold text-white text-sm">پرتال دانشجویی پل</span>
+    </a>
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="text-xs text-gray-400 font-semibold px-2 py-1 hover:text-white">سایت اصلی</a>
+      <button onclick="toggleMobilePortalMenu()" class="p-2 text-gray-300 hover:text-white">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Portal Drawer -->
+  <div id="mobile-portal-menu" class="hidden md:hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" onclick="toggleMobilePortalMenu()">
+    <div class="w-64 bg-[#0f1218] h-full p-6 flex flex-col justify-between border-l border-white/10" onclick="event.stopPropagation()">
+      <div>
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" class="w-12 h-12 rounded-full object-cover border-2 border-[#fd9923]">
+          <div>
+            <h4 class="font-bold text-sm text-white">سارا محمدی</h4>
+            <p class="text-[11px] text-gray-400">شناسه: 48291</p>
+          </div>
+        </div>
+        <ul class="space-y-2 text-sm font-medium">
+          <li><button onclick="switchTab('overview')" class="w-full text-right py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white font-bold">نمای کلی</button></li>
+          <li><button onclick="switchTab('courses')" class="w-full text-right py-2.5 px-3 rounded-xl text-gray-300 hover:bg-white/5">دوره‌های من</button></li>
+          <li><button onclick="switchTab('grades')" class="w-full text-right py-2.5 px-3 rounded-xl text-gray-300 hover:bg-white/5">نمرات</button></li>
+          <li><button onclick="switchTab('schedule')" class="w-full text-right py-2.5 px-3 rounded-xl text-gray-300 hover:bg-white/5">برنامه کلاسی</button></li>
+          <li><button onclick="switchTab('settings')" class="w-full text-right py-2.5 px-3 rounded-xl text-gray-300 hover:bg-white/5">تنظیمات</button></li>
+        </ul>
+      </div>
+      <div class="space-y-3">
+        <button onclick="openCertificateModal()" class="w-full py-2.5 bg-[#fd9923] hover:bg-[#F7941D] text-white text-xs font-bold rounded-xl shadow-md">مشاهده گواهینامه</button>
+        <a href="index.html" class="block w-full py-2 text-center text-xs text-gray-400 hover:text-white border border-white/10 rounded-xl">خروج به سایت اصلی</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SideNavBar (Right Side in RTL) -->
+  <aside class="hidden md:flex flex-col h-screen py-6 bg-[#0c0e14] border-l border-white/10 fixed right-0 w-64 z-40 shadow-2xl">
+    
+    <!-- User Profile Header -->
+    <div class="px-6 mb-8 flex flex-col items-center">
+      <div class="relative mb-3">
+        <img alt="تصویر پروفایل دانشجو" class="w-20 h-20 rounded-full object-cover border-2 border-[#fd9923] shadow-lg shadow-[#fd9923]/20" 
+             src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop"/>
+        <span class="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 border-2 border-[#0c0e14] rounded-full"></span>
+      </div>
+      <h2 class="font-bold text-lg text-white text-center">پرتال دانشجویی</h2>
+      <p class="text-xs text-gray-400 mt-1 text-center font-medium">شناسه آکادمی: <span class="font-bold text-gray-200">48291</span></p>
+      <span class="text-xs text-[#fdba74] font-bold mt-1">سارا محمدی</span>
+    </div>
+
+    <!-- Nav List -->
+    <ul class="flex flex-col gap-1.5 flex-grow px-3">
+      <li>
+        <button onclick="switchTab('overview')" id="tab-btn-overview" class="portal-nav-btn w-full flex items-center gap-3.5 px-4 py-3 bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white font-semibold rounded-xl text-sm shadow-[0_4px_16px_rgba(253,153,35,0.25)] transition">
+          <span class="material-symbols-outlined text-xl">dashboard</span>
+          <span>نمای کلی</span>
+        </button>
+      </li>
+      <li>
+        <button onclick="switchTab('courses')" id="tab-btn-courses" class="portal-nav-btn w-full flex items-center gap-3.5 px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white font-medium rounded-xl text-sm transition">
+          <span class="material-symbols-outlined text-xl">menu_book</span>
+          <span>دوره‌های من</span>
+        </button>
+      </li>
+      <li>
+        <button onclick="switchTab('grades')" id="tab-btn-grades" class="portal-nav-btn w-full flex items-center gap-3.5 px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white font-medium rounded-xl text-sm transition">
+          <span class="material-symbols-outlined text-xl">grade</span>
+          <span>نمرات</span>
+        </button>
+      </li>
+      <li>
+        <button onclick="switchTab('schedule')" id="tab-btn-schedule" class="portal-nav-btn w-full flex items-center gap-3.5 px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white font-medium rounded-xl text-sm transition">
+          <span class="material-symbols-outlined text-xl">calendar_month</span>
+          <span>برنامه کلاسی</span>
+        </button>
+      </li>
+      <li>
+        <button onclick="switchTab('settings')" id="tab-btn-settings" class="portal-nav-btn w-full flex items-center gap-3.5 px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white font-medium rounded-xl text-sm transition">
+          <span class="material-symbols-outlined text-xl">settings</span>
+          <span>تنظیمات</span>
+        </button>
+      </li>
+      <li class="pt-2 border-t border-white/10">
+        <a href="index.html" class="w-full flex items-center gap-3.5 px-4 py-2.5 text-gray-400 hover:text-[#fdba74] text-xs font-semibold rounded-xl transition">
+          <span class="material-symbols-outlined text-base">home</span>
+          <span>بازگشت به سایت اصلی</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Bottom Action Button -->
+    <div class="px-4 mt-auto">
+      <button onclick="openCertificateModal()" class="w-full py-3 px-4 bg-[#181c26] hover:bg-[#fd9923] hover:text-black border border-white/10 text-gray-200 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-lg">
+        <span class="material-symbols-outlined text-sm">workspace_premium</span>
+        <span>مشاهده گواهینامه</span>
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 mr-0 md:mr-64 p-4 sm:p-6 lg:p-10 overflow-y-auto">
+    
+    <!-- Tab 1: Overview -->
+    <div id="tab-overview" class="space-y-8 animate-fade-in">
+      
+      <!-- Greeting Header -->
+      <header class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-2">
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white mb-1">سلام سارا، خوش آمدید!</h1>
+          <p class="text-gray-400 text-sm">در اینجا مروری بر وضعیت تحصیلی شما در آکادمی زبان پل آورده شده است.</p>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center gap-3">
+          <button onclick="openLevelTestModal()" class="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#fd9923] to-[#F7941D] hover:from-[#f59e0b] hover:to-[#ea580c] text-white rounded-xl font-bold text-xs shadow-[0_4px_16px_rgba(253,153,35,0.3)] transition">
+            <span class="material-symbols-outlined text-base">quiz</span>
+            <span>شرکت در آزمون تعیین سطح</span>
+          </button>
+          <button onclick="openTuitionModal()" class="flex items-center gap-2 px-5 py-2.5 bg-[#13161c] border border-white/15 text-gray-200 hover:border-white/30 rounded-xl font-bold text-xs transition">
+            <span class="material-symbols-outlined text-base text-[#fdba74]">payments</span>
+            <span>پرداخت شهریه</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Overview Cards (Bento Grid) -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Card 1: Active Courses -->
+        <div class="bg-[#13161c] p-6 rounded-2xl border border-white/10 shadow-xl">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-blue-950/80 border border-blue-500/30 rounded-xl text-blue-400">
+              <span class="material-symbols-outlined text-2xl">school</span>
+            </div>
+            <span class="bg-amber-950/60 border border-amber-500/30 text-amber-300 text-xs font-bold px-2.5 py-1 rounded-full">ترم جاری</span>
+          </div>
+          <h3 class="text-3xl font-extrabold text-white mb-1">۲</h3>
+          <p class="text-xs text-gray-400 font-semibold">دوره‌های فعال</p>
+        </div>
+
+        <!-- Card 2: GPA Grade -->
+        <div class="bg-[#13161c] p-6 rounded-2xl border border-white/10 shadow-xl">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-emerald-950/80 border border-emerald-500/30 rounded-xl text-emerald-400">
+              <span class="material-symbols-outlined text-2xl">star</span>
+            </div>
+            <span class="text-emerald-400 text-xs font-bold flex items-center gap-0.5 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+              <span class="material-symbols-outlined text-sm">trending_up</span>
+              +۵٪
+            </span>
+          </div>
+          <h3 class="text-3xl font-extrabold text-white mb-1">A-</h3>
+          <p class="text-xs text-gray-400 font-semibold">معدل کل</p>
+        </div>
+
+        <!-- Card 3: Upcoming Exam -->
+        <div class="bg-[#13161c] p-6 rounded-2xl border border-white/10 shadow-xl">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-rose-950/80 border border-rose-500/30 rounded-xl text-rose-400">
+              <span class="material-symbols-outlined text-2xl">assignment</span>
+            </div>
+            <span class="text-rose-300 bg-rose-950/60 border border-rose-500/30 text-xs font-bold px-2.5 py-1 rounded-full">هفته آینده</span>
+          </div>
+          <h3 class="text-3xl font-extrabold text-white mb-1">۱</h3>
+          <p class="text-xs text-gray-400 font-semibold">آزمون پیش رو</p>
+        </div>
+
+        <!-- Card 4: Attendance -->
+        <div class="bg-[#13161c] p-6 rounded-2xl border border-white/10 shadow-xl">
+          <div class="flex justify-between items-start mb-4">
+            <div class="p-3 bg-[#1e2430] border border-white/10 rounded-xl text-[#fdba74]">
+              <span class="material-symbols-outlined text-2xl">how_to_reg</span>
+            </div>
+            <span class="text-gray-400 text-xs">۲۴ از ۲۵ جلسه</span>
+          </div>
+          <h3 class="text-3xl font-extrabold text-white mb-1">۹۵٪</h3>
+          <p class="text-xs text-gray-400 font-semibold">حضور و غیاب</p>
+          <div class="w-full bg-[#1e2430] h-2 rounded-full mt-3 overflow-hidden">
+            <div class="bg-emerald-500 h-full rounded-full" style="width: 95%"></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Weekly Schedule Table -->
+      <section class="bg-[#13161c] rounded-2xl border border-white/10 shadow-xl p-6 sm:p-8">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-extrabold text-white flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#fd9923]">event_note</span>
+            برنامه هفتگی
+          </h2>
+          <span class="text-xs text-gray-400">ترم پاییز ۱۴۰۳</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-right border-collapse min-w-[600px]">
+            <thead>
+              <tr class="border-b border-white/10 text-gray-400 text-xs">
+                <th class="py-3 px-4 font-bold">روز</th>
+                <th class="py-3 px-4 font-bold">زمان</th>
+                <th class="py-3 px-4 font-bold">دوره</th>
+                <th class="py-3 px-4 font-bold">مدرس</th>
+                <th class="py-3 px-4 font-bold">کلاس</th>
+                <th class="py-3 px-4 font-bold text-center">لینک ورود آنلاین</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm divide-y divide-white/5">
+              
+              <tr class="hover:bg-white/5 transition-colors">
+                <td class="py-4 px-4 font-bold text-gray-100">شنبه</td>
+                <td class="py-4 px-4 text-gray-400">۱۶:۰۰ - ۱۷:۳۰</td>
+                <td class="py-4 px-4">
+                  <span class="bg-blue-950/80 border border-blue-500/30 text-blue-300 text-xs font-bold px-3 py-1 rounded-full">انگلیسی پیشرفته C1</span>
+                </td>
+                <td class="py-4 px-4 text-gray-300 font-medium">دکتر احمدی</td>
+                <td class="py-4 px-4 text-gray-400">کلاس ۱۰۱</td>
+                <td class="py-4 px-4 text-center">
+                  <button onclick="showToast('اتاق آنلاین کلاس فعال است.', 'success')" class="px-3 py-1.5 bg-[#fd9923] hover:bg-[#F7941D] text-white rounded-lg text-xs font-bold transition">ورود به کلاس</button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/5 transition-colors">
+                <td class="py-4 px-4 font-bold text-gray-100">دوشنبه</td>
+                <td class="py-4 px-4 text-gray-400">۱۶:۰۰ - ۱۷:۳۰</td>
+                <td class="py-4 px-4">
+                  <span class="bg-blue-950/80 border border-blue-500/30 text-blue-300 text-xs font-bold px-3 py-1 rounded-full">انگلیسی پیشرفته C1</span>
+                </td>
+                <td class="py-4 px-4 text-gray-300 font-medium">دکتر احمدی</td>
+                <td class="py-4 px-4 text-gray-400">کلاس ۱۰۱</td>
+                <td class="py-4 px-4 text-center">
+                  <button onclick="showToast('اتاق آنلاین کلاس فعال است.', 'success')" class="px-3 py-1.5 bg-[#fd9923] hover:bg-[#F7941D] text-white rounded-lg text-xs font-bold transition">ورود به کلاس</button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/5 transition-colors">
+                <td class="py-4 px-4 font-bold text-gray-100">چهارشنبه</td>
+                <td class="py-4 px-4 text-gray-400">۱۸:۰۰ - ۱۹:۳۰</td>
+                <td class="py-4 px-4">
+                  <span class="bg-amber-950/80 border border-amber-500/30 text-amber-300 text-xs font-bold px-3 py-1 rounded-full">مکالمه آزاد B2</span>
+                </td>
+                <td class="py-4 px-4 text-gray-300 font-medium">استاد رضایی</td>
+                <td class="py-4 px-4 text-gray-400">کلاس ۲۰۵</td>
+                <td class="py-4 px-4 text-center">
+                  <button onclick="showToast('اتاق آنلاین کلاس فعال است.', 'success')" class="px-3 py-1.5 bg-[#fd9923] hover:bg-[#F7941D] text-white rounded-lg text-xs font-bold transition">ورود به کلاس</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Tab 2: My Courses -->
+    <div id="tab-courses" class="hidden space-y-6 animate-fade-in">
+      <h2 class="text-2xl font-bold text-white">دوره‌های من</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="bg-[#13161c] p-6 rounded-2xl border border-white/10 shadow-xl">
+          <span class="bg-blue-950/80 border border-blue-500/30 text-blue-300 text-xs font-bold px-3 py-1 rounded-full">ترم فعال</span>
+          <h3 class="text-lg font-bold text-white mt-3 mb-1">دوره جامع انگلیسی پیشرفته (C1)</h3>
+          <p class="text-xs text-gray-400 mb-4">مدرس: دکتر احمدی | روزهای شنبه و دوشنبه</p>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs text-gray-300 mb-1">
+              <span>پیشرفت دوره:</span>
+              <span class="font-bold text-[#fdba74]">۶۸٪</span>
+            </div>
+            <div class="w-full bg-[#1e2430] h-2 rounded-full overflow-hidden">
+              <div class="bg-[#fd9923] h-full rounded-full" style="width: 68%"></div>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="showToast('دانلود جزوات دوره آغاز شد.', 'success')" class="flex-1 py-2 border border-white/15 text-gray-300 rounded-xl text-xs font-semibold hover:bg-white/5">جزوات و فایل‌ها</button>
+            <button onclick="showToast('در حال اتصال به سامانه آزمون...', 'success')" class="flex-1 py-2 bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white rounded-xl text-xs font-semibold">تکالیف و آزمون</button>
+          </div>
+        </div>
+
+        <div class="bg-[#13161c] p-6 rounded-2xl border border-white/10 shadow-xl">
+          <span class="bg-amber-950/80 border border-amber-500/30 text-amber-300 text-xs font-bold px-3 py-1 rounded-full">ترم فعال</span>
+          <h3 class="text-lg font-bold text-white mt-3 mb-1">کارگاه مکالمه آزاد و لهجه شناسی (B2)</h3>
+          <p class="text-xs text-gray-400 mb-4">مدرس: استاد رضایی | روزهای چهارشنبه</p>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs text-gray-300 mb-1">
+              <span>پیشرفت دوره:</span>
+              <span class="font-bold text-[#fdba74]">۴۵٪</span>
+            </div>
+            <div class="w-full bg-[#1e2430] h-2 rounded-full overflow-hidden">
+              <div class="bg-[#fd9923] h-full rounded-full" style="width: 45%"></div>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="showToast('دانلود پادکست‌های کلاسی...', 'success')" class="flex-1 py-2 border border-white/15 text-gray-300 rounded-xl text-xs font-semibold hover:bg-white/5">پادکست‌ها</button>
+            <button onclick="showToast('ارسال تمرین صوتی به استاد...', 'success')" class="flex-1 py-2 bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white rounded-xl text-xs font-semibold">تمرین‌های صوتی</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tab 3: Grades -->
+    <div id="tab-grades" class="hidden space-y-6 animate-fade-in">
+      <h2 class="text-2xl font-bold text-white">کارنامه و نمرات</h2>
+      <div class="bg-[#13161c] p-6 rounded-2xl border border-white/10 shadow-xl">
+        <table class="w-full text-right border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-white/10 text-gray-400 text-xs">
+              <th class="py-3 px-4">عنوان آزمون / مهارت</th>
+              <th class="py-3 px-4">تاریخ برگزاری</th>
+              <th class="py-3 px-4">نمره کسب شده</th>
+              <th class="py-3 px-4">وضعیت</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr class="hover:bg-white/5 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-gray-100">آزمون میان‌ترم رایتینگ C1</td>
+              <td class="py-3.5 px-4 text-gray-400">۱۵ مرداد ۱۴۰۳</td>
+              <td class="py-3.5 px-4 font-bold text-[#fdba74]">۹۲ از ۱۰۰</td>
+              <td class="py-3.5 px-4"><span class="text-xs bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 px-2 py-0.5 rounded-full font-bold">عالی</span></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-gray-100">ارزیابی مکالمه و اسپیکینگ B2</td>
+              <td class="py-3.5 px-4 text-gray-400">۱ مرداد ۱۴۰۳</td>
+              <td class="py-3.5 px-4 font-bold text-[#fdba74]">۸۸ از ۱۰۰</td>
+              <td class="py-3.5 px-4"><span class="text-xs bg-blue-950/80 border border-blue-500/40 text-blue-300 px-2 py-0.5 rounded-full font-bold">قبول</span></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors">
+              <td class="py-3.5 px-4 font-bold text-gray-100">آزمون شنیداری (Listening Test)</td>
+              <td class="py-3.5 px-4 text-gray-400">۲۰ تیر ۱۴۰۳</td>
+              <td class="py-3.5 px-4 font-bold text-[#fdba74]">۹۵ از ۱۰۰</td>
+              <td class="py-3.5 px-4"><span class="text-xs bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 px-2 py-0.5 rounded-full font-bold">عالی</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tab 4: Schedule -->
+    <div id="tab-schedule" class="hidden space-y-6 animate-fade-in">
+      <h2 class="text-2xl font-bold text-white">تقویم آموزشی و امتحانات</h2>
+      <div class="bg-[#13161c] p-6 rounded-2xl border border-white/10 shadow-xl space-y-4">
+        <div class="flex items-center gap-4 p-4 bg-amber-950/40 rounded-xl border border-amber-500/30">
+          <span class="material-symbols-outlined text-[#fdba74] text-2xl">alarm</span>
+          <div>
+            <h4 class="font-bold text-sm text-[#fdba74]">آزمون پایان‌ترم آیلتس ماک</h4>
+            <p class="text-xs text-gray-300">جمعه ۲۸ مهرماه - ساعت ۰۹:۰۰ صبح (حضوری در سالن امتحانات شعبه مرکزی)</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 p-4 bg-blue-950/40 rounded-xl border border-blue-500/30">
+          <span class="material-symbols-outlined text-blue-400 text-2xl">event_available</span>
+          <div>
+            <h4 class="font-bold text-sm text-blue-300">کارگاه رایگان رفع اشکال گرامر پیشرفته</h4>
+            <p class="text-xs text-gray-300">پنجشنبه ۲۰ مهرماه - ساعت ۱۷:۰۰ الی ۱۹:۰۰ (آنلاین)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 5: Settings -->
+    <div id="tab-settings" class="hidden space-y-6 animate-fade-in">
+      <h2 class="text-2xl font-bold text-white">تنظیمات حساب کاربری</h2>
+      <div class="bg-[#13161c] p-6 rounded-2xl border border-white/10 shadow-xl max-w-xl space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">نام و نام خانوادگی</label>
+          <input type="text" value="سارا محمدی" class="w-full px-4 py-2.5 border border-white/15 rounded-xl text-sm bg-[#181c26] text-white focus:outline-none focus:border-[#fd9923]">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">شماره همراه</label>
+          <input type="text" dir="ltr" value="0912 345 6789" class="w-full px-4 py-2.5 border border-white/15 rounded-xl text-sm bg-[#181c26] text-white focus:outline-none focus:border-[#fd9923]">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-300 mb-1">ایمیل</label>
+          <input type="email" dir="ltr" value="sara.mohammadi@example.com" class="w-full px-4 py-2.5 border border-white/15 rounded-xl text-sm bg-[#181c26] text-white focus:outline-none focus:border-[#fd9923]">
+        </div>
+        <button onclick="showToast('تغییرات با موفقیت ذخیره شد.', 'success')" class="px-6 py-2.5 bg-gradient-to-r from-[#fd9923] to-[#F7941D] hover:from-[#f59e0b] hover:to-[#ea580c] text-white font-bold text-xs rounded-xl shadow-md">ذخیره تغییرات</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Level Test Modal -->
+  <div id="level-test-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+    <div class="modal-backdrop fixed inset-0" onclick="closeLevelTestModal()"></div>
+    <div class="modal-content relative bg-[#13161c] rounded-2xl shadow-2xl w-full max-w-xl p-6 sm:p-8 z-10 animate-fade-in border border-white/15 max-h-[90vh] overflow-y-auto text-gray-200">
+      
+      <div class="flex justify-between items-center pb-4 border-b border-white/10 mb-6">
+        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#fd9923]">quiz</span>
+          آزمون تعیین سطح آنلاین و سریع
+        </h3>
+        <button onclick="closeLevelTestModal()" class="text-gray-400 hover:text-white">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div id="test-questions-box" class="space-y-6 text-sm">
+        <p class="text-xs text-gray-400">لطفاً به سوالات زیر پاسخ دهید تا سطح زبان شما مشخص گردد:</p>
+
+        <!-- Q1 -->
+        <div class="p-4 bg-[#181c26] rounded-xl border border-white/10">
+          <p class="font-bold text-white mb-3" dir="ltr">1. Choose the correct form: "She ______ English for 5 years."</p>
+          <div class="space-y-2 text-xs text-gray-300" dir="ltr">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="wrong" class="text-[#fd9923]"> is learning</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="correct" class="text-[#fd9923]"> has been learning</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="wrong" class="text-[#fd9923]"> learns</label>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="p-4 bg-[#181c26] rounded-xl border border-white/10">
+          <p class="font-bold text-white mb-3" dir="ltr">2. Synonym of "Crucial":</p>
+          <div class="space-y-2 text-xs text-gray-300" dir="ltr">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="wrong" class="text-[#fd9923]"> Minor</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="correct" class="text-[#fd9923]"> Essential</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="wrong" class="text-[#fd9923]"> Optional</label>
+          </div>
+        </div>
+
+        <button onclick="evaluateTest()" class="w-full py-3 bg-gradient-to-r from-[#fd9923] to-[#F7941D] hover:from-[#f59e0b] hover:to-[#ea580c] text-white font-bold rounded-xl shadow-md transition">
+          ثبت و محاسبه نتیجه سطح
+        </button>
+      </div>
+
+      <!-- Result View -->
+      <div id="test-result-box" class="hidden text-center py-6 space-y-4">
+        <div class="w-16 h-16 bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
+          <span class="material-symbols-outlined text-3xl">verified</span>
+        </div>
+        <h4 class="text-xl font-bold text-white">نتیجه سطح شما: پیشرفته (C1)</h4>
+        <p class="text-xs text-gray-300 max-w-sm mx-auto">تبریک! مهارت‌های زبانی شما در سطح C1 ارزیابی شد. دوره‌های پیشنهادی: آیلتس آکادمیک و مکالمه پیشرفته.</p>
+        <button onclick="closeLevelTestModal()" class="px-6 py-2.5 bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white font-bold text-xs rounded-xl">مشاهده دوره‌های منطبق</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tuition Payment Modal -->
+  <div id="tuition-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+    <div class="modal-backdrop fixed inset-0" onclick="closeTuitionModal()"></div>
+    <div class="modal-content relative bg-[#13161c] rounded-2xl shadow-2xl w-full max-w-md p-6 z-10 animate-fade-in border border-white/15 text-gray-200">
+      
+      <div class="flex justify-between items-center pb-4 border-b border-white/10 mb-4">
+        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#fd9923]">credit_card</span>
+          پرداخت آنلاین شهریه
+        </h3>
+        <button onclick="closeTuitionModal()" class="text-gray-400 hover:text-white">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-sm">
+        <div class="bg-[#181c26] p-4 rounded-xl border border-white/10">
+          <div class="flex justify-between text-xs text-gray-300 mb-2">
+            <span>دوره:</span>
+            <span class="font-bold text-white">انگلیسی پیشرفته C1</span>
+          </div>
+          <div class="flex justify-between text-xs text-gray-300 mb-2">
+            <span>شناسه پرداخت:</span>
+            <span class="font-mono text-gray-300">98421004</span>
+          </div>
+          <div class="flex justify-between text-sm font-bold text-[#fdba74] pt-2 border-t border-white/10">
+            <span>مبلغ قابل پرداخت:</span>
+            <span>۳,۲۰۰,۰۰۰ تومان</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 text-xs text-gray-300">
+          <p class="font-bold text-white">انتخاب درگاه پرداخت:</p>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="p-3 border border-white/15 rounded-xl flex items-center gap-2 cursor-pointer bg-[#181c26] has-[:checked]:border-[#fd9923]">
+              <input type="radio" name="gateway" checked class="text-[#fd9923]">
+              <span class="font-bold text-white">شاپرک / زرین‌پال</span>
+            </label>
+            <label class="p-3 border border-white/15 rounded-xl flex items-center gap-2 cursor-pointer bg-[#181c26] has-[:checked]:border-[#fd9923]">
+              <input type="radio" name="gateway" class="text-[#fd9923]">
+              <span class="font-bold text-white">درگاه بانک سامان</span>
+            </label>
+          </div>
+        </div>
+
+        <button onclick="simulatePayment()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-base">lock</span>
+          <span>اتصال به درگاه و پرداخت امن</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Certificate Viewer Modal -->
+  <div id="certificate-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+    <div class="modal-backdrop fixed inset-0" onclick="closeCertificateModal()"></div>
+    <div class="modal-content relative bg-[#13161c] rounded-2xl shadow-2xl w-full max-w-3xl p-6 sm:p-8 z-10 animate-fade-in border border-white/15 max-h-[90vh] overflow-y-auto text-gray-200">
+      
+      <div class="flex justify-between items-center pb-4 border-b border-white/10 mb-6">
+        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#fd9923]">workspace_premium</span>
+          گواهینامه بین‌المللی پایان دوره آکادمی پل
+        </h3>
+        <button onclick="closeCertificateModal()" class="text-gray-400 hover:text-white">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Certificate Canvas Box (Printable) -->
+      <div id="certificate-print-area" class="border-4 border-amber-500/40 p-8 rounded-2xl bg-gradient-to-br from-[#1c1f2b] via-[#12151c] to-[#0c0e14] text-center relative overflow-hidden my-4 shadow-2xl">
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#fd9923]/10 rounded-full blur-2xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#fd9923]/10 rounded-full blur-2xl"></div>
+
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#fd9923] to-[#d97706] text-white flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#fd9923]/30">
+          <span class="material-symbols-outlined text-3xl">language</span>
+        </div>
+
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-wide mb-1">Pol Language Academy</h2>
+        <span class="text-xs font-semibold text-[#fdba74] tracking-widest block mb-4">CERTIFICATE OF COMPLETION & PROFICIENCY</span>
+
+        <p class="text-xs text-gray-400 mb-2">این گواهینامه به سرکار خانم / جناب آقای</p>
+        <h3 class="text-2xl font-extrabold text-white mb-2">سارا محمدی (Sara Mohammadi)</h3>
+        
+        <p class="text-xs text-gray-300 max-w-lg mx-auto leading-relaxed mb-6">
+          به پاس گذراندن موفقیت‌آمیز دوره تخصصی <strong class="text-[#fdba74]">English Language Proficiency (Advanced C1)</strong> به مدت ۱۲۰ ساعت آموزشی و کسب نمره عالی (A-) اعطا می‌گردد.
+        </p>
+
+        <div class="flex justify-between items-end pt-6 border-t border-white/10 max-w-md mx-auto text-xs text-gray-400">
+          <div>
+            <span class="block font-bold text-gray-200">دکتر احمدی</span>
+            <span class="text-[10px] text-gray-500">مدیر آموزش و اگزمینر آکادمی</span>
+          </div>
+          <div class="w-14 h-14 border-2 border-dashed border-[#fd9923] rounded-full flex items-center justify-center text-[#fdba74] font-bold text-[10px]">
+            مهر رسمی
+          </div>
+          <div>
+            <span class="block font-bold text-gray-200">کد رهگیری معتبر:</span>
+            <span class="font-mono text-[10px] text-[#fdba74]">POL-2024-C1-8492</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 flex justify-between items-center">
+        <button onclick="window.print()" class="px-6 py-2.5 bg-gradient-to-r from-[#fd9923] to-[#F7941D] hover:from-[#f59e0b] hover:to-[#ea580c] text-white font-bold text-xs rounded-xl flex items-center gap-2 shadow">
+          <span class="material-symbols-outlined text-sm">print</span>
+          چاپ و دریافت فایل PDF
+        </button>
+        <button onclick="closeCertificateModal()" class="text-xs font-semibold text-gray-400 hover:text-white">
+          بستن پنجره
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/telegram.js"></script>
+
+  <script>
+    function toggleMobilePortalMenu() {
+      document.getElementById('mobile-portal-menu').classList.toggle('hidden');
+    }
+
+    function switchTab(tabId) {
+      // Hide all tabs
+      const tabs = ['overview', 'courses', 'grades', 'schedule', 'settings'];
+      tabs.forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (el) el.classList.add('hidden');
+        if (btn) {
+          btn.className = "portal-nav-btn w-full flex items-center gap-3.5 px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white font-medium rounded-xl text-sm transition";
+        }
+      });
+
+      // Show chosen tab
+      const currentTab = document.getElementById(`tab-${tabId}`);
+      const currentBtn = document.getElementById(`tab-btn-${tabId}`);
+      if (currentTab) currentTab.classList.remove('hidden');
+      if (currentBtn) {
+        currentBtn.className = "portal-nav-btn w-full flex items-center gap-3.5 px-4 py-3 bg-gradient-to-r from-[#fd9923] to-[#F7941D] text-white font-semibold rounded-xl text-sm shadow-[0_4px_16px_rgba(253,153,35,0.25)] transition";
+      }
+
+      const mobileMenu = document.getElementById('mobile-portal-menu');
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+      }
+    }
+
+    function openLevelTestModal() {
+      document.getElementById('test-questions-box').classList.remove('hidden');
+      document.getElementById('test-result-box').classList.add('hidden');
+      document.getElementById('level-test-modal').classList.remove('hidden');
+    }
+
+    function closeLevelTestModal() {
+      document.getElementById('level-test-modal').classList.add('hidden');
+    }
+
+    function evaluateTest() {
+      document.getElementById('test-questions-box').classList.add('hidden');
+      document.getElementById('test-result-box').classList.remove('hidden');
+    }
+
+    function openTuitionModal() {
+      document.getElementById('tuition-modal').classList.remove('hidden');
+    }
+
+    function closeTuitionModal() {
+      document.getElementById('tuition-modal').classList.add('hidden');
+    }
+
+    function simulatePayment() {
+      showToast('در حال انتقال به درگاه پرداخت شاپرک...', 'success');
+      setTimeout(() => {
+        closeTuitionModal();
+        showToast('پرداخت شهریه شما با موفقیت ثبت و رسید صادر شد.', 'success');
+      }, 1500);
+    }
+
+    function openCertificateModal() {
+      document.getElementById('certificate-modal').classList.remove('hidden');
+    }
+
+    function closeCertificateModal() {
+      document.getElementById('certificate-modal').classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>
